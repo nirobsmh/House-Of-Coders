@@ -639,6 +639,36 @@ a {
   flex-direction: column;
   gap: 16px;
   box-shadow: 0 0 20px rgba(255, 150, 90, 0.25), 0 24px 60px rgba(15, 23, 42, 0.16);
+  overflow: hidden;
+}
+
+.service-card-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(120deg, rgba(255, 120, 60, 0.7), rgba(99, 102, 241, 0.65), rgba(236, 72, 153, 0.6));
+  background-size: 200% 200%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: gradientBorderShift 6s ease infinite;
+}
+
+.service-card-light::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 18px;
+  background: linear-gradient(#f9fafb, #f9fafb);
+  z-index: 0;
+}
+
+.service-card-light > * {
+  position: relative;
+  z-index: 1;
 }
 
 .service-card-light p {
@@ -854,13 +884,13 @@ a {
 .timeline-node {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 60px 1fr;
+  grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr);
   align-items: center;
 }
 
 .timeline-card {
-  width: clamp(280px, 25vw, 420px);
-  max-width: 100%;
+  width: 100%;
+  max-width: 420px;
   background: linear-gradient(rgba(12, 16, 38, 0.92), rgba(12, 16, 38, 0.92)) padding-box,
     linear-gradient(135deg, rgba(96, 165, 250, 0.45), rgba(167, 139, 250, 0.4), rgba(251, 146, 60, 0.35)) border-box;
   border: 1px solid transparent;
@@ -1091,5 +1121,17 @@ a {
   100% {
     transform: translateY(-180px) translateX(30px);
     opacity: 0;
+  }
+}
+
+@keyframes gradientBorderShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
