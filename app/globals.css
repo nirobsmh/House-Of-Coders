@@ -1,6 +1,9 @@
 :root {
   --orange: #ff4b1c;
   --orange-glow: rgba(255, 90, 30, 0.55);
+  --orange-soft-glow: rgba(255, 120, 60, 0.35);
+  --bubble-core: rgba(255, 140, 70, 0.95);
+  --bubble-glow: rgba(255, 120, 60, 0.6);
   --dark: #0d0b0f;
   --dark-2: #140f15;
   --light: #f7f5f2;
@@ -30,8 +33,8 @@ a {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 18px rgba(120, 200, 255, 0.45);
+  border: 2px solid rgba(255, 120, 60, 0.9);
+  box-shadow: 0 0 18px rgba(255, 120, 60, 0.55);
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9999;
@@ -40,8 +43,8 @@ a {
 }
 
 .custom-cursor.is-active {
-  border-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 24px rgba(120, 200, 255, 0.8);
+  border-color: rgba(255, 170, 110, 0.95);
+  box-shadow: 0 0 24px rgba(255, 140, 80, 0.85);
 }
 
 @media (pointer: fine) {
@@ -71,8 +74,8 @@ a {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(145, 220, 255, 0.95), rgba(145, 220, 255, 0.1));
-  box-shadow: 0 0 16px rgba(120, 200, 255, 0.7);
+  background: radial-gradient(circle, var(--bubble-core), rgba(255, 140, 70, 0.1));
+  box-shadow: 0 0 16px var(--bubble-glow);
   opacity: 0.7;
   animation: bubbleFloat 8s linear infinite;
 }
@@ -279,16 +282,58 @@ a {
 }
 
 .btn-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   background: linear-gradient(135deg, var(--orange), #ff7b3b);
   color: #0c0b11;
   border: none;
   box-shadow: 0 18px 50px rgba(255, 80, 20, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .btn-glow:hover {
   transform: translateY(-3px) scale(1.01);
   box-shadow: 0 24px 60px rgba(255, 80, 20, 0.5);
+  filter: brightness(1.05);
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.45), transparent 55%);
+  transform: translateX(-120%);
+  transition: opacity 0.3s ease, transform 0.6s ease;
+}
+
+.btn-glow:hover::after {
+  opacity: 1;
+  transform: translateX(40%);
+}
+
+.btn-glow .btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  display: inline-grid;
+  place-items: center;
+  background: rgba(12, 10, 16, 0.15);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-glow .btn-icon i {
+  font-size: 0.9rem;
+}
+
+.btn-glow:hover .btn-icon {
+  transform: scale(1.08) rotate(-8deg);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.35);
 }
 
 .badge-pill {
@@ -359,13 +404,13 @@ a {
     linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(236, 72, 153, 0.35), rgba(251, 146, 60, 0.3)) border-box;
   border: 1px solid transparent;
   overflow: hidden;
-  box-shadow: 0 40px 80px rgba(8, 8, 12, 0.6);
+  box-shadow: 0 0 26px var(--orange-soft-glow), 0 40px 80px rgba(8, 8, 12, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-card-inner:hover {
   transform: translateY(-6px);
-  box-shadow: 0 48px 90px rgba(8, 8, 12, 0.7);
+  box-shadow: 0 0 32px rgba(255, 120, 60, 0.45), 0 48px 90px rgba(8, 8, 12, 0.7);
 }
 
 .panel-label {
@@ -481,12 +526,13 @@ a {
   padding: 20px;
   border-radius: 16px;
   width: 240px;
+  box-shadow: 0 0 22px rgba(255, 120, 60, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .floating-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 28px rgba(255, 120, 60, 0.35), 0 18px 30px rgba(0, 0, 0, 0.35);
 }
 
 .progress-bar {
@@ -505,34 +551,31 @@ a {
 
 .brand-marquee {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: 20px 0;
 }
 
 .brand-track {
-  display: flex;
-  gap: 16px;
-  animation: marquee 18s linear infinite;
-  width: max-content;
-}
-
-.brand-track-alt {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  animation: marqueeAlt 18s linear infinite;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: column;
+  gap: 14px 16px;
+  width: 100%;
 }
 
 .brand-pill {
   padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid transparent;
+  background: linear-gradient(rgba(16, 14, 22, 0.9), rgba(16, 14, 22, 0.9)) padding-box,
+    linear-gradient(135deg, rgba(255, 120, 60, 0.5), rgba(99, 102, 241, 0.45), rgba(236, 72, 153, 0.4))
+      border-box;
   color: rgba(255, 255, 255, 0.75);
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 .section-kicker {
@@ -565,6 +608,7 @@ a {
   border-radius: 20px;
   padding: 26px;
   transform: translateY(0);
+  box-shadow: 0 0 20px rgba(255, 120, 60, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
@@ -573,7 +617,7 @@ a {
 .timeline-item:hover,
 .contact-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 28px rgba(255, 120, 60, 0.35), 0 28px 50px rgba(0, 0, 0, 0.35);
 }
 
 .service-card i {
@@ -594,7 +638,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+  box-shadow: 0 0 20px rgba(255, 150, 90, 0.25), 0 24px 60px rgba(15, 23, 42, 0.16);
 }
 
 .service-card-light p {
@@ -716,13 +760,13 @@ a {
   background: linear-gradient(rgba(10, 10, 16, 0.72), rgba(10, 10, 16, 0.72)) padding-box,
     linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(236, 72, 153, 0.4), rgba(251, 191, 36, 0.35)) border-box;
   border: 1px solid transparent;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02), 0 0 20px rgba(255, 120, 60, 0.22);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 26px rgba(255, 120, 60, 0.32), 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .feature-card h5 {
@@ -815,28 +859,29 @@ a {
 }
 
 .timeline-card {
-  max-width: 520px;
+  width: clamp(280px, 25vw, 420px);
+  max-width: 100%;
   background: linear-gradient(rgba(12, 16, 38, 0.92), rgba(12, 16, 38, 0.92)) padding-box,
     linear-gradient(135deg, rgba(96, 165, 250, 0.45), rgba(167, 139, 250, 0.4), rgba(251, 146, 60, 0.35)) border-box;
   border: 1px solid transparent;
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 24px rgba(255, 140, 80, 0.28), 0 24px 50px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .timeline-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 32px rgba(255, 140, 80, 0.38), 0 30px 70px rgba(0, 0, 0, 0.4);
 }
 
 .timeline-card h4 {
-  font-size: 1.6rem;
+  font-size: 1.85rem;
   font-weight: 700;
 }
 
 .timeline-card p {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -881,7 +926,7 @@ a {
   gap: 6px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   margin-bottom: 8px;
 }
 
@@ -998,9 +1043,10 @@ a {
     min-height: auto;
   }
 
-  .brand-track,
-  .brand-track-alt {
-    animation-duration: 24s;
+  .brand-track {
+    grid-auto-flow: row;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1033,23 +1079,6 @@ a {
   }
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marqueeAlt {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 
 @keyframes bubbleFloat {
   0% {
