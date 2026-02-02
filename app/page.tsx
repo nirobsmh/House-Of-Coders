@@ -16,6 +16,48 @@ const statVariants = {
 
 export default function Home() {
   useEffect(() => {
+    const cursor = document.querySelector<HTMLDivElement>(".custom-cursor");
+    const supportsFinePointer = window.matchMedia("(pointer: fine)").matches;
+    let cursorFrame: number;
+    const cursorTarget = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const cursorPosition = { x: cursorTarget.x, y: cursorTarget.y };
+
+    const updateCursor = () => {
+      if (!cursor) return;
+      cursorPosition.x += (cursorTarget.x - cursorPosition.x) * 0.15;
+      cursorPosition.y += (cursorTarget.y - cursorPosition.y) * 0.15;
+      cursor.style.transform = `translate(${cursorPosition.x}px, ${cursorPosition.y}px)`;
+      cursorFrame = window.requestAnimationFrame(updateCursor);
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      cursorTarget.x = event.clientX;
+      cursorTarget.y = event.clientY;
+    };
+
+    const handleMouseOver = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!cursor || !target) return;
+      if (target.closest("a, button, input, textarea, select, [role='button']")) {
+        cursor.classList.add("is-active");
+      }
+    };
+
+    const handleMouseOut = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!cursor || !target) return;
+      if (target.closest("a, button, input, textarea, select, [role='button']")) {
+        cursor.classList.remove("is-active");
+      }
+    };
+
+    if (cursor && supportsFinePointer) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseover", handleMouseOver);
+      window.addEventListener("mouseout", handleMouseOut);
+      cursorFrame = window.requestAnimationFrame(updateCursor);
+    }
+
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.from(".hero-title", {
@@ -96,11 +138,26 @@ export default function Home() {
     });
 
     ScrollTrigger.refresh();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("mouseout", handleMouseOut);
+      if (cursorFrame) {
+        window.cancelAnimationFrame(cursorFrame);
+      }
+    };
   }, []);
 
   return (
     <div>
+      <div className="custom-cursor" />
       <div className="noise-layer" />
+      <div className="bubble-field" aria-hidden="true">
+        {Array.from({ length: 14 }).map((_, index) => (
+          <span className="bubble" key={`bubble-${index}`} />
+        ))}
+      </div>
       <header className="hero-section">
         <div className="hero-orbs">
           <span className="orb orb-one" />
