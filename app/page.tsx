@@ -21,18 +21,29 @@ export default function Home() {
     let cursorFrame: number;
     const cursorTarget = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const cursorPosition = { x: cursorTarget.x, y: cursorTarget.y };
+    const cursorScale = { value: 1 };
+    const cursorScaleTarget = { value: 1 };
+    let scaleTimeout: number | undefined;
 
     const updateCursor = () => {
       if (!cursor) return;
       cursorPosition.x += (cursorTarget.x - cursorPosition.x) * 0.15;
       cursorPosition.y += (cursorTarget.y - cursorPosition.y) * 0.15;
-      cursor.style.transform = `translate(${cursorPosition.x}px, ${cursorPosition.y}px)`;
+      cursorScale.value += (cursorScaleTarget.value - cursorScale.value) * 0.12;
+      cursor.style.transform = `translate(${cursorPosition.x}px, ${cursorPosition.y}px) scale(${cursorScale.value})`;
       cursorFrame = window.requestAnimationFrame(updateCursor);
     };
 
     const handleMouseMove = (event: MouseEvent) => {
       cursorTarget.x = event.clientX;
       cursorTarget.y = event.clientY;
+      cursorScaleTarget.value = 0.85;
+      if (scaleTimeout) {
+        window.clearTimeout(scaleTimeout);
+      }
+      scaleTimeout = window.setTimeout(() => {
+        cursorScaleTarget.value = 1;
+      }, 120);
     };
 
     const handleMouseOver = (event: MouseEvent) => {
@@ -146,6 +157,9 @@ export default function Home() {
       if (cursorFrame) {
         window.cancelAnimationFrame(cursorFrame);
       }
+      if (scaleTimeout) {
+        window.clearTimeout(scaleTimeout);
+      }
     };
   }, []);
 
@@ -210,6 +224,9 @@ export default function Home() {
                 </li>
               </ul>
               <a className="btn btn-glow ms-lg-4" href="#contact">
+                <span className="btn-icon" aria-hidden="true">
+                  <i className="fa-solid fa-phone" />
+                </span>
                 Book a call
               </a>
             </div>
@@ -320,32 +337,20 @@ export default function Home() {
               <div className="brand-marquee">
                 <div className="brand-track">
                   {[
-                    "Pulse Labs",
-                    "Orbitra",
-                    "Starlight",
-                    "Nova",
-                    "Rift",
-                    "CloudNine",
-                    "Vector",
-                    "Lumina",
+                    "TypeScript",
+                    "JavaScript",
+                    "React.js",
+                    "Next.js",
+                    "Node.js",
+                    "Docker",
+                    "API",
+                    "Frontend",
+                    "Backend",
+                    "Fullstack",
+                    "Web",
+                    "Cloud",
                   ].map((brand) => (
                     <span className="brand-pill" key={brand}>
-                      {brand}
-                    </span>
-                  ))}
-                </div>
-                <div className="brand-track brand-track-alt">
-                  {[
-                    "Pulse Labs",
-                    "Orbitra",
-                    "Starlight",
-                    "Nova",
-                    "Rift",
-                    "CloudNine",
-                    "Vector",
-                    "Lumina",
-                  ].map((brand) => (
-                    <span className="brand-pill" key={`${brand}-alt`}>
                       {brand}
                     </span>
                   ))}
@@ -503,6 +508,9 @@ export default function Home() {
                 high-contrast gradients, and modular systems that evolve with your product.
               </p>
               <a className="btn btn-glow mt-3" href="#contact">
+                <span className="btn-icon" aria-hidden="true">
+                  <i className="fa-solid fa-phone" />
+                </span>
                 Book a discovery call
               </a>
             </div>
