@@ -1,4 +1,18 @@
 import Image from "next/image";
+import SiteFooter from "../../components/SiteFooter";
+
+const foundersTeam = [
+  {
+    name: "Iftakhar Khan Efaz",
+    image: "/images/iftakhar-efaz.svg",
+    linkedin: "https://www.linkedin.com",
+  },
+  {
+    name: "Saha Anirudha Arnob",
+    image: "/images/saha-arnob.svg",
+    linkedin: "https://www.linkedin.com",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -28,40 +42,63 @@ export default function AboutPage() {
             <div className="collapse navbar-collapse" id="aboutNav">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
                 <li className="nav-item">
+                  <a className="nav-link" href="/">
+                    <i className="fa-solid fa-house nav-icon" aria-hidden="true" />
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" href="/services">
+                    <i className="fa-solid fa-briefcase nav-icon" aria-hidden="true" />
                     Services
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/">
-                    Work
+                  <a className="nav-link" href="/#work">
+                    <i className="fa-solid fa-diagram-project nav-icon" aria-hidden="true" />
+                    Projects
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/about">
-                    About
+                  <a className="nav-link" href="/contact">
+                    <i className="fa-solid fa-envelope nav-icon" aria-hidden="true" />
+                    Contact us
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/#contact">
-                    Contact
+                  <a className="nav-link active" href="/about">
+                    <i className="fa-solid fa-user-group nav-icon" aria-hidden="true" />
+                    About us
                   </a>
                 </li>
               </ul>
-              <a className="btn btn-glow ms-lg-4" href="/#contact">
-                <span className="btn-icon" aria-hidden="true">
-                  <i className="fa-solid fa-phone" />
-                </span>
-                Book a call
-              </a>
+              <div className="nav-cta-group">
+                <a
+                  className="btn btn-glow"
+                  href="https://cal.com/nirob/int-meeting"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="btn-icon" aria-hidden="true">
+                    <i className="fa-solid fa-phone" />
+                  </span>
+                  Book a call
+                </a>
+                <a className="btn btn-outline-light" href="/contact">
+                  Get quote
+                </a>
+              </div>
             </div>
           </div>
         </nav>
 
         <div className="container-fluid px-lg-5 about-hero-content">
           <div className="row align-items-center">
-            <div className="col-lg-7">
-              <span className="about-eyebrow">Engineering-driven team</span>
+            <div className="col-lg-9 col-xl-8">
+              <span className="about-eyebrow">
+                <i className="fa-solid fa-people-group" aria-hidden="true" />
+                About us
+              </span>
               <h1 className="display-3 fw-bold">
                 The People Behind Home Of Coders
               </h1>
@@ -87,27 +124,6 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-5">
-              <div className="about-hero-card">
-                <div className="about-hero-badge">Founder &amp; Engineer</div>
-                <h2>Nirob</h2>
-                <p>
-                  Full-stack software engineer with 7+ years of experience
-                  building AI-powered apps. Led engineering for products,
-                  shipping real-time systems using React, Next.js, React Native,
-                  Node.js, and modern AI stacks.
-                </p>
-                <a
-                  className="about-linkedin"
-                  href="https://www.linkedin.com/in/nirobsmh/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-linkedin" aria-hidden="true" />
-                  Connect on LinkedIn
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </header>
@@ -117,6 +133,15 @@ export default function AboutPage() {
           <div className="row align-items-center g-5">
             <div className="col-lg-8">
               <div className="about-founder-card">
+                <a
+                  className="about-card-linkedin"
+                  href="https://www.linkedin.com/in/nirobsmh/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Nirob on LinkedIn"
+                >
+                  <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
+                </a>
                 <span className="about-role">Founder &amp; Lead Engineer</span>
                 <h2>Nirob</h2>
                 <h3>Full-Stack Software Engineer</h3>
@@ -132,11 +157,12 @@ export default function AboutPage() {
                   <span>AI Product Strategy</span>
                 </div>
                 <a
-                  className="btn btn-outline-light"
+                  className="btn btn-outline-light about-link-btn"
                   href="https://www.linkedin.com/in/nirobsmh/"
                   target="_blank"
                   rel="noreferrer"
                 >
+                  <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
                   View LinkedIn
                 </a>
               </div>
@@ -151,6 +177,49 @@ export default function AboutPage() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-founders-team">
+        <div className="container-fluid px-lg-5">
+          <div className="section-heading text-center about-team-heading">
+            <p className="section-kicker">Founders team</p>
+            <h2 className="text-white">Automation &amp; Engineering Leaders</h2>
+            <p className="about-team-subtitle">
+              A multidisciplinary duo focused on reliable automation, scalable
+              engineering, and systems that keep businesses moving.
+            </p>
+          </div>
+          <div className="row g-4 justify-content-center">
+            {foundersTeam.map((founder) => (
+              <div className="col-md-6 col-lg-5" key={founder.name}>
+                <div className="about-team-card">
+                  <a
+                    className="about-card-linkedin"
+                    href={founder.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${founder.name} on LinkedIn`}
+                  >
+                    <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
+                  </a>
+                  <div className="about-team-avatar">
+                    <Image
+                      src={founder.image}
+                      alt={`Avatar of ${founder.name}`}
+                      width={88}
+                      height={88}
+                    />
+                  </div>
+                  <span className="about-team-role">Automation &amp; Engineering</span>
+                  <h3>{founder.name}</h3>
+                  <p className="about-team-exp">
+                    3+ years of experience with Automation and Engineering.
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -180,6 +249,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <SiteFooter />
     </div>
   );
 }
