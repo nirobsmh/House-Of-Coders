@@ -213,6 +213,11 @@ export default function Home() {
                   </a>
                 </li>
                 <li className="nav-item">
+                  <a className="nav-link" href="/about">
+                    About
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" href="#process">
                     Process
                   </a>
@@ -713,7 +718,7 @@ export default function Home() {
                 <h5>Company</h5>
                 <ul>
                   <li>
-                    <a href="/#process">About Us</a>
+                    <a href="/about">About Us</a>
                   </li>
                   <li>
                     <a href="/#work">Projects</a>
