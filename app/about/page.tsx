@@ -7,7 +7,10 @@ export default function AboutPage() {
       <header className="about-hero">
         <nav className="navbar navbar-expand-lg navbar-dark py-4">
           <div className="container-fluid px-lg-5">
-            <a className="navbar-brand d-flex align-items-center gap-2" href="/">
+            <a
+              className="navbar-brand d-flex align-items-center gap-2"
+              href="/"
+            >
               <span className="brand-icon">HC</span>
               <span className="brand-text">Home Of Coders</span>
             </a>
@@ -59,20 +62,28 @@ export default function AboutPage() {
           <div className="row align-items-center">
             <div className="col-lg-7">
               <span className="about-eyebrow">Engineering-driven team</span>
-              <h1 className="display-3 fw-bold">The People Behind Home Of Coders</h1>
+              <h1 className="display-3 fw-bold">
+                The People Behind Home Of Coders
+              </h1>
               <p className="lead">
-                We are a boutique engineering studio focused on high-impact, AI-powered products. Our
-                approach is rooted in ownership, craftsmanship, and building systems that scale
-                sustainably.
+                We are a boutique engineering studio focused on high-impact,
+                AI-powered products. Our approach is rooted in ownership,
+                craftsmanship, and building systems that scale sustainably.
               </p>
               <div className="about-highlight">
                 <div>
                   <h3>AI-first delivery</h3>
-                  <p>Rapid prototypes, smart automation, and production-ready architecture.</p>
+                  <p>
+                    Rapid prototypes, smart automation, and production-ready
+                    architecture.
+                  </p>
                 </div>
                 <div>
                   <h3>Product ownership</h3>
-                  <p>From MVPs to global launches, we stay with you through every iteration.</p>
+                  <p>
+                    From MVPs to global launches, we stay with you through every
+                    iteration.
+                  </p>
                 </div>
               </div>
             </div>
@@ -81,9 +92,10 @@ export default function AboutPage() {
                 <div className="about-hero-badge">Founder &amp; Engineer</div>
                 <h2>Nirob</h2>
                 <p>
-                  Full-stack software engineer with 7+ years of experience building AI-powered apps.
-                  Led engineering for products, shipping real-time systems using React, Next.js,
-                  React Native, Node.js, and modern AI stacks.
+                  Full-stack software engineer with 7+ years of experience
+                  building AI-powered apps. Led engineering for products,
+                  shipping real-time systems using React, Next.js, React Native,
+                  Node.js, and modern AI stacks.
                 </p>
                 <a
                   className="about-linkedin"
@@ -103,15 +115,15 @@ export default function AboutPage() {
       <section className="about-founder-section">
         <div className="container-fluid px-lg-5">
           <div className="row align-items-center g-5">
-            <div className="col-lg-6">
+            <div className="col-lg-8">
               <div className="about-founder-card">
                 <span className="about-role">Founder &amp; Lead Engineer</span>
                 <h2>Nirob</h2>
                 <h3>Full-Stack Software Engineer</h3>
                 <p>
-                  Experienced in owning products end-to-end, from MVP to scale. I design and build
-                  AI-powered systems that prioritize performance, reliability, and measurable
-                  business impact.
+                  Experienced in owning products end-to-end, from MVP to scale.
+                  I design and build AI-powered systems that prioritize
+                  performance, reliability, and measurable business impact.
                 </p>
                 <div className="about-skill-grid">
                   <span>React &amp; Next.js</span>
@@ -129,9 +141,14 @@ export default function AboutPage() {
                 </a>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-4">
               <div className="about-founder-image">
-                <Image src="/images/nirob.svg" alt="Portrait of Nirob" width={560} height={640} />
+                <Image
+                  src="/images/nirob.jpg"
+                  alt="Portrait of Nirob"
+                  width={560}
+                  height={640}
+                />
               </div>
             </div>
           </div>
@@ -145,8 +162,8 @@ export default function AboutPage() {
               <div className="about-panel about-panel-dark">
                 <h2>Vision</h2>
                 <p>
-                  Build a globally trusted engineering partner that helps teams innovate, scale, and
-                  lead through intelligent digital systems.
+                  Build a globally trusted engineering partner that helps teams
+                  innovate, scale, and lead through intelligent digital systems.
                 </p>
               </div>
             </div>
@@ -154,8 +171,9 @@ export default function AboutPage() {
               <div className="about-panel about-panel-light">
                 <h2>Mission</h2>
                 <p>
-                  Design, develop, and deliver modern software that solves real business challenges
-                  through transparency, technical excellence, and measurable growth.
+                  Design, develop, and deliver modern software that solves real
+                  business challenges through transparency, technical
+                  excellence, and measurable growth.
                 </p>
               </div>
             </div>
