@@ -203,7 +203,7 @@ export default function Home() {
             <div className="collapse navbar-collapse" id="mainNav">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
                 <li className="nav-item">
-                  <a className="nav-link" href="#services">
+                  <a className="nav-link" href="/services">
                     Services
                   </a>
                 </li>
@@ -256,7 +256,7 @@ export default function Home() {
                 <a className="btn btn-glow btn-lg" href="#work">
                   See our work
                 </a>
-                <a className="btn btn-outline-light btn-lg" href="#services">
+                <a className="btn btn-outline-light btn-lg" href="/services">
                   Explore services
                 </a>
               </div>
@@ -666,18 +666,142 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer">
+      <footer className="footer mega-footer">
         <div className="container">
-          <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-            <div>
-              <strong>Home Of Coders</strong>
-              <p className="mb-0">Crafting experiences with relentless precision.</p>
+          <div className="mega-footer-top">
+            <div className="brand-stack">
+              <div className="brand-mark">
+                <span className="brand-icon">HC</span>
+                <span className="brand-text">Home Of Coders</span>
+              </div>
+              <p>
+                Automation, API &amp; custom systems for growing businesses — built with
+                precision and speed.
+              </p>
+              <div className="footer-cta">
+                <button className="btn btn-light" type="button">
+                  Book a Free Call
+                  <span aria-hidden="true">↗</span>
+                </button>
+                <button className="btn btn-outline-light" type="button">
+                  Review us on Trustpilot
+                </button>
+              </div>
             </div>
-            <div className="footer-links">
-              <a href="#services">Services</a>
-              <a href="#work">Work</a>
-              <a href="#process">Process</a>
+            <div className="footer-columns">
+              <div>
+                <h5>Services</h5>
+                <ul>
+                  <li>
+                    <a href="/services">API Integration &amp; Development</a>
+                  </li>
+                  <li>
+                    <a href="/services">Automation Systems</a>
+                  </li>
+                  <li>
+                    <a href="/services">Custom Web Development</a>
+                  </li>
+                  <li>
+                    <a href="/services">WordPress / Shopify</a>
+                  </li>
+                  <li>
+                    <a href="/services">Maintenance &amp; Support</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5>Company</h5>
+                <ul>
+                  <li>
+                    <a href="/#process">About Us</a>
+                  </li>
+                  <li>
+                    <a href="/#work">Projects</a>
+                  </li>
+                  <li>
+                    <a href="/#contact">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="#blogs">Blogs</a>
+                  </li>
+                  <li>
+                    <a href="#faqs">FAQs</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5>Legal</h5>
+                <ul>
+                  <li>
+                    <a href="#privacy">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="#terms">Terms &amp; Conditions</a>
+                  </li>
+                  <li>
+                    <a href="#cookies">Cookie Policy</a>
+                  </li>
+                  <li>
+                    <a href="#disclaimer">Disclaimer</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5>Contact &amp; Locations</h5>
+                <div className="footer-social-row">
+                  <a aria-label="Email" href="#email">
+                    <i className="fa-solid fa-envelope" />
+                  </a>
+                  <a aria-label="WhatsApp" href="#whatsapp">
+                    <i className="fa-brands fa-whatsapp" />
+                  </a>
+                  <a aria-label="Telegram" href="#telegram">
+                    <i className="fa-brands fa-telegram" />
+                  </a>
+                </div>
+                <div className="footer-location">
+                  <span className="footer-location-icon">
+                    <i className="fa-solid fa-globe" />
+                  </span>
+                  <div>
+                    <strong>US Headquarters</strong>
+                    <p>Cheyenne, WY, USA</p>
+                  </div>
+                </div>
+                <div className="footer-location">
+                  <span className="footer-location-icon">
+                    <i className="fa-solid fa-location-dot" />
+                  </span>
+                  <div>
+                    <strong>Development Center</strong>
+                    <p>Dhaka, Bangladesh</p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="mega-footer-bottom">
+            <div className="follow-us">
+              <span>Follow us</span>
+              <div className="follow-icons">
+                <a aria-label="LinkedIn" href="#linkedin">
+                  <i className="fa-brands fa-linkedin-in" />
+                </a>
+                <a aria-label="Dribbble" href="#dribbble">
+                  <i className="fa-brands fa-dribbble" />
+                </a>
+                <a aria-label="X" href="#x">
+                  <i className="fa-brands fa-x-twitter" />
+                </a>
+                <a aria-label="Facebook" href="#facebook">
+                  <i className="fa-brands fa-facebook-f" />
+                </a>
+                <a aria-label="Instagram" href="#instagram">
+                  <i className="fa-brands fa-instagram" />
+                </a>
+              </div>
+            </div>
+            <p>© 2026 Home Of Coders IT LLC. All rights reserved.</p>
           </div>
         </div>
       </footer>
