@@ -66,6 +66,7 @@ export default function ServiceModulePage({ service }: ServiceModulePageProps) {
     };
 
     if (cursor && supportsFinePointer) {
+      document.body.classList.add("custom-cursor-active");
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseover", handleMouseOver);
       window.addEventListener("mouseout", handleMouseOut);
@@ -73,6 +74,7 @@ export default function ServiceModulePage({ service }: ServiceModulePageProps) {
     }
 
     return () => {
+      document.body.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);

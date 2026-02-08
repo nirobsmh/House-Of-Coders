@@ -7,9 +7,13 @@ import BootstrapClient from "../components/BootstrapClient";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Home Of Coders — Digital Product Agency",
+  title: "Home Of Coders | Digital Studio",
   description:
-    "Home Of Coders is a full-stack agency building premium web and software experiences.",
+    "Home Of Coders is a full-stack digital studio building premium web and software experiences.",
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -22,6 +26,7 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         />
+        <link rel="icon" href="/images/logo.png" />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <BootstrapClient />

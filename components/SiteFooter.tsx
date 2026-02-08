@@ -72,33 +72,38 @@ export default function SiteFooter() {
                 </li>
               </ul>
             </div>
-              <div>
-                <h5>Legal</h5>
-                <ul>
-                  <li>
-                    <a href="/privacy-policy">Privacy Policy</a>
-                  </li>
-                  <li>
-                    <a href="/terms-and-conditions">Terms &amp; Conditions</a>
-                  </li>
-                  <li>
-                    <a href="/cookie-policy">Cookie Policy</a>
-                  </li>
-                  <li>
-                    <a href="/disclaimer">Disclaimer</a>
-                  </li>
-                </ul>
-              </div>
+            <div>
+              <h5>Legal</h5>
+              <ul>
+                <li>
+                  <a href="/privacy-policy">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+                </li>
+                <li>
+                  <a href="/cookie-policy">Cookie Policy</a>
+                </li>
+                <li>
+                  <a href="/disclaimer">Disclaimer</a>
+                </li>
+              </ul>
+            </div>
             <div>
               <h5>Contact &amp; Locations</h5>
               <div className="footer-social-row">
                 <a
                   aria-label="Email"
-                  href="mailto:houseofcodersofficial@gmail.com"
+                  href="mailto:homeofcoders@gmail.com"
                 >
                   <i className="fa-solid fa-envelope" />
                 </a>
-                <a aria-label="WhatsApp" href="#whatsapp">
+                <a
+                  aria-label="WhatsApp"
+                  href="https://wa.me/8801886123362"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i className="fa-brands fa-whatsapp" />
                 </a>
                 <a aria-label="Telegram" href="#telegram">
@@ -119,35 +124,35 @@ export default function SiteFooter() {
         </div>
         <div className="mega-footer-bottom">
           <div className="follow-us">
-              <span>Follow us</span>
-              <div className="follow-icons">
-                <a
-                  aria-label="LinkedIn"
-                  href="https://www.linkedin.com/company/home-of-coderss/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-linkedin-in" />
-                </a>
-                <a
-                  aria-label="Facebook"
-                  href="https://www.facebook.com/profile.php?id=61587329875075"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-facebook-f" />
-                </a>
-                <a
-                  aria-label="Instagram"
-                  href="https://www.instagram.com/home_of_coders/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-instagram" />
-                </a>
-              </div>
+            <span>Follow us</span>
+            <div className="follow-icons">
+              <a
+                aria-label="LinkedIn"
+                href="https://www.linkedin.com/company/home-of-coderss/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fa-brands fa-linkedin-in" />
+              </a>
+              <a
+                aria-label="Facebook"
+                href="https://www.facebook.com/profile.php?id=61587329875075"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fa-brands fa-facebook-f" />
+              </a>
+              <a
+                aria-label="Instagram"
+                href="https://www.instagram.com/home_of_coders/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fa-brands fa-instagram" />
+              </a>
             </div>
-          <p>© 2026 Home Of Coders IT LLC. All rights reserved.</p>
+          </div>
+          <p>© 2026 Home Of Coders. All rights reserved.</p>
         </div>
       </div>
     </footer>

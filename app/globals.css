@@ -30,28 +30,29 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   border: 2px solid rgba(255, 120, 60, 0.9);
-  box-shadow: 0 0 18px rgba(255, 120, 60, 0.55);
+  background: rgba(255, 120, 60, 0.18);
+  box-shadow:
+    0 0 20px rgba(255, 120, 60, 0.6),
+    0 0 36px rgba(255, 120, 60, 0.45);
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9999;
   transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
 }
 
 .custom-cursor.is-active {
   border-color: rgba(255, 170, 110, 0.95);
-  box-shadow: 0 0 24px rgba(255, 140, 80, 0.85);
+  box-shadow:
+    0 0 26px rgba(255, 140, 80, 0.9),
+    0 0 44px rgba(255, 120, 60, 0.55);
 }
 
 @media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-
   .custom-cursor {
     display: block;
   }
@@ -1357,6 +1358,22 @@ a {
   gap: 1rem;
 }
 
+.service-detail-card .service-cta {
+  color: #ffb98a;
+  background: rgba(255, 120, 60, 0.15);
+  border: 1px solid rgba(255, 140, 90, 0.4);
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.service-detail-card .service-cta:hover {
+  color: #fff;
+  border-color: rgba(255, 170, 120, 0.6);
+  box-shadow: 0 0 18px rgba(255, 120, 60, 0.35);
+}
+
 .timeline-pill {
   display: inline-flex;
   padding: 0.6rem 1rem;
@@ -2302,6 +2319,39 @@ a {
   margin-top: 2rem;
 }
 
+.contact-hero-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.contact-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 160, 100, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  width: fit-content;
+  margin-top: 0.5rem;
+}
+
+.contact-phone-link span {
+  margin-left: 0.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+  color: #ffb98a;
+}
+
+.contact-phone-link:hover {
+  border-color: rgba(255, 170, 120, 0.6);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(255, 120, 60, 0.35);
+}
+
 .contact-form-section {
   padding: 3.5rem 0 5rem;
 }
@@ -2462,6 +2512,16 @@ a {
   border-color: rgba(255, 170, 120, 0.45);
 }
 
+.contact-option-card.is-selected {
+  border-color: rgba(255, 170, 120, 0.75);
+  box-shadow: 0 12px 30px rgba(255, 120, 60, 0.25);
+}
+
+.contact-option-card.is-selected .contact-option-icon {
+  background: rgba(255, 160, 100, 0.35);
+  color: #ffd4b2;
+}
+
 .contact-option-icon {
   width: 44px;
   height: 44px;
@@ -2517,6 +2577,30 @@ a {
   height: 18px;
   border-radius: 50%;
   border: 2px solid rgba(255, 200, 160, 0.6);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.budget-radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.contact-budget-card.is-selected {
+  border-color: rgba(255, 170, 120, 0.85);
+  box-shadow: 0 14px 32px rgba(255, 120, 60, 0.3);
+}
+
+.contact-budget-card.is-selected .budget-radio {
+  border-color: rgba(255, 170, 120, 0.95);
+}
+
+.contact-budget-card.is-selected .budget-radio::after {
+  background: #ffb98a;
+  box-shadow: 0 0 10px rgba(255, 120, 60, 0.6);
 }
 
 .contact-budget-card strong {

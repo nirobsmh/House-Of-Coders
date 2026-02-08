@@ -84,7 +84,7 @@ const sections = [
     paragraphs: [
       "We retain personal information only for as long as necessary to fulfill the purposes outlined in this policy, comply with legal obligations, or resolve disputes.",
       "You may request deletion of your personal data by contacting us.",
-      "Email: houseofcodersofficial@gmail.com",
+      "Email: homeofcoders@gmail.com",
     ],
   },
   {
@@ -120,7 +120,7 @@ const sections = [
     title: "Contact Information",
     paragraphs: [
       "If you have any questions or concerns about this Privacy Policy, please contact us at:",
-      "Email: houseofcodersofficial@gmail.com",
+      "Email: homeofcoders@gmail.com",
     ],
   },
 ];

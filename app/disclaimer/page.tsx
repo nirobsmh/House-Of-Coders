@@ -60,7 +60,7 @@ const sections = [
     title: "Contact Information",
     paragraphs: [
       "If you have any questions regarding this Disclaimer, please contact us at:",
-      "Email: houseofcodersofficial@gmail.com",
+      "Email: homeofcoders@gmail.com",
     ],
   },
 ];

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import SiteFooter from "../../components/SiteFooter";
 
 const services = [
@@ -21,6 +22,7 @@ const services = [
       "Long-term maintenance and optimization",
     ],
     timeline: "6-10 weeks (scope dependent)",
+    detailHref: "/services/custom-web-development",
   },
   {
     title: "API & Server Integration",
@@ -38,6 +40,7 @@ const services = [
       "Observability, logging, and uptime monitors",
     ],
     timeline: "2-6 weeks (per integration)",
+    detailHref: "/services/api-integration",
   },
   {
     title: "Automation & Bots",
@@ -55,6 +58,7 @@ const services = [
       "Scheduled reporting dashboards",
     ],
     timeline: "1-4 weeks (per workflow)",
+    detailHref: "/services/automation",
   },
   {
     title: "Cloud Architecture",
@@ -72,6 +76,7 @@ const services = [
       "Security reviews and disaster recovery",
     ],
     timeline: "4-8 weeks (phased rollout)",
+    detailHref: "/services/custom-web-development",
   },
   {
     title: "WordPress Development",
@@ -89,6 +94,7 @@ const services = [
       "Ongoing updates and monitoring",
     ],
     timeline: "3-6 weeks (scope dependent)",
+    detailHref: "/services/ecommerce-development",
   },
   {
     title: "E-Commerce Website Building",
@@ -106,6 +112,7 @@ const services = [
       "Analytics + attribution dashboards",
     ],
     timeline: "4-8 weeks (store build)",
+    detailHref: "/services/ecommerce-development",
   },
   {
     title: "Social Media Automation",
@@ -123,6 +130,7 @@ const services = [
       "Content repurposing scripts",
     ],
     timeline: "1-3 weeks (setup)",
+    detailHref: "/services/automation",
   },
   {
     title: "AI Agents",
@@ -140,6 +148,7 @@ const services = [
       "Guardrails, testing, and monitoring",
     ],
     timeline: "3-6 weeks (pilot)",
+    detailHref: "/services/custom-web-development",
   },
 ];
 
@@ -230,6 +239,7 @@ export default function ServicesPage() {
     };
 
     if (cursor && supportsFinePointer) {
+      document.body.classList.add("custom-cursor-active");
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseover", handleMouseOver);
       window.addEventListener("mouseout", handleMouseOut);
@@ -237,6 +247,7 @@ export default function ServicesPage() {
     }
 
     return () => {
+      document.body.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);
@@ -290,31 +301,46 @@ export default function ServicesPage() {
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
                 <li className="nav-item">
                   <a className="nav-link" href="/">
-                    <i className="fa-solid fa-house nav-icon" aria-hidden="true" />
+                    <i
+                      className="fa-solid fa-house nav-icon"
+                      aria-hidden="true"
+                    />
                     Home
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link active" href="/services">
-                    <i className="fa-solid fa-briefcase nav-icon" aria-hidden="true" />
+                    <i
+                      className="fa-solid fa-briefcase nav-icon"
+                      aria-hidden="true"
+                    />
                     Services
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/#work">
-                    <i className="fa-solid fa-diagram-project nav-icon" aria-hidden="true" />
+                    <i
+                      className="fa-solid fa-diagram-project nav-icon"
+                      aria-hidden="true"
+                    />
                     Projects
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/contact">
-                    <i className="fa-solid fa-envelope nav-icon" aria-hidden="true" />
+                    <i
+                      className="fa-solid fa-envelope nav-icon"
+                      aria-hidden="true"
+                    />
                     Contact us
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/about">
-                    <i className="fa-solid fa-user-group nav-icon" aria-hidden="true" />
+                    <i
+                      className="fa-solid fa-user-group nav-icon"
+                      aria-hidden="true"
+                    />
                     About us
                   </a>
                 </li>
@@ -440,10 +466,13 @@ export default function ServicesPage() {
                     <span className="timeline-pill">
                       Timeline: {service.timeline}
                     </span>
-                    <button className="service-cta" type="button">
+                    <Link
+                      className="service-cta"
+                      href={service.detailHref as any}
+                    >
                       View details
                       <span aria-hidden="true">→</span>
-                    </button>
+                    </Link>
                   </div>
                 </article>
               </div>

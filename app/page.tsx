@@ -73,6 +73,7 @@ export default function Home() {
     };
 
     if (cursor && supportsFinePointer) {
+      document.body.classList.add("custom-cursor-active");
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseover", handleMouseOver);
       window.addEventListener("mouseout", handleMouseOut);
@@ -164,6 +165,7 @@ export default function Home() {
     ScrollTrigger.refresh();
 
     return () => {
+      document.body.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);
@@ -175,6 +177,31 @@ export default function Home() {
       }
     };
   }, []);
+
+  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") || "");
+    const company = String(formData.get("company") || "");
+    const vision = String(formData.get("vision") || "");
+
+    const subject = "Home Of Coders Website Inquiry";
+    const body = [
+      "New inquiry from Home Of Coders homepage.",
+      "",
+      `Name: ${name}`,
+      `Company: ${company}`,
+      "",
+      "Project Vision:",
+      vision,
+    ].join("\n");
+
+    window.location.href = `mailto:homeofcoders@gmail.com?subject=${
+      encodeURIComponent(
+        subject,
+      )
+    }&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <div>
@@ -295,9 +322,9 @@ export default function Home() {
                 web &amp; software experiences.
               </h1>
               <p className="lead text-white-50 mt-4">
-                Home Of Coders is a full-stack agency inspired by fearless
-                design. We blend strategy, code, and motion to ship premium
-                digital products that convert.
+                Home Of Coders is a full-stack digital studio inspired by
+                fearless design. We blend strategy, code, and motion to ship
+                premium websites and software products that convert and scale.
               </p>
               <div className="hero-chips">
                 {[
@@ -665,24 +692,24 @@ export default function Home() {
               <div className="work-grid">
                 {[
                   {
-                    title: "Awaken",
+                    title: "AI Coaching",
                     text:
-                      "Awaken freedom.Transform fear. Talk to AI of real world-class coaches anytime, to unlock your fullest life",
+                      "an ai-driven coaching platform enabling real-time conversations, behavior insights, and personalized guidance from world-class coaching models.",
                   },
                   {
-                    title: "Thybrid",
+                    title: "Fitness",
                     text:
-                      "Join the fitness community, share your wods. Dominate the leaderboards.",
+                      "a community-based fitness platform with workout sharing, real-time activity tracking, and competitive leaderboards.",
                   },
                   {
-                    title: "Sierra Romeo",
+                    title: "Aviation Chatbot",
                     text:
-                      "YOUR ULTIMATE AI-POWERED AVIATION LIBRARIAN & RESEARCH ASSISTANT. Access 60,000+ FAA documents instantly. Get accurate, cited answers to complex aviation questions with our AI-powered search and research tools designed specifically for aviation professionals",
+                      "an ai-powered aviation knowledge system providing semantic search and cited answers across faa regulatory and technical documents.",
                   },
                   {
                     title: "Time Out Matters",
                     text:
-                      "The only mental wellness platform designed specifically for autism, ADHD, OCD, and neurodivergent individuals. Get 24/7 AI wellness support, personalized wellness tools, and self-guided support resources.",
+                      "a mental wellness platform for neurodivergent users, offering 24/7 ai-assisted support, personalized interventions, and self-guided resources.",
                   },
                 ].map((work) => (
                   <div className="work-card" key={work.title}>
@@ -747,8 +774,7 @@ export default function Home() {
               </p>
               <div className="contact-list">
                 <div>
-                  <i className="fa-solid fa-envelope" />{" "}
-                  houseofcodersofficial@gmail.com
+                  <i className="fa-solid fa-envelope" /> homeofcoders@gmail.com
                 </div>
                 <div>
                   <i className="fa-solid fa-location-dot" />{" "}
@@ -757,7 +783,7 @@ export default function Home() {
               </div>
             </div>
             <div className="col-lg-6">
-              <form className="contact-card">
+              <form className="contact-card" onSubmit={handleContactSubmit}>
                 <div className="mb-3">
                   <label className="form-label" htmlFor="name">
                     Name
@@ -765,6 +791,7 @@ export default function Home() {
                   <input
                     className="form-control"
                     id="name"
+                    name="name"
                     placeholder="Ada Lovelace"
                   />
                 </div>
@@ -775,6 +802,7 @@ export default function Home() {
                   <input
                     className="form-control"
                     id="company"
+                    name="company"
                     placeholder="Starlight Labs"
                   />
                 </div>
@@ -785,6 +813,7 @@ export default function Home() {
                   <textarea
                     className="form-control"
                     id="vision"
+                    name="vision"
                     rows={4}
                     placeholder="Share your idea..."
                   />

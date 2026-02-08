@@ -121,7 +121,7 @@ const sections = [
     title: "Contact Information",
     paragraphs: [
       "For questions regarding these Terms & Conditions, please contact:",
-      "Email: houseofcodersofficial@gmail.com",
+      "Email: homeofcoders@gmail.com",
     ],
   },
 ];

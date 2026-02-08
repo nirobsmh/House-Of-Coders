@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import SiteFooter from "../../components/SiteFooter";
 
 const serviceOptions = [
@@ -63,6 +66,56 @@ const budgetOptions = [
 ];
 
 export default function ContactPage() {
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [selectedBudget, setSelectedBudget] = useState<string | null>(null);
+
+  const toggleService = (service: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(service)
+        ? prev.filter((item) => item !== service)
+        : [...prev, service]
+    );
+  };
+
+  const handleBudgetSelect = (budget: string) => {
+    setSelectedBudget(budget);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const fullName = String(formData.get("fullName") || "");
+    const email = String(formData.get("email") || "");
+    const phone = String(formData.get("phone") || "");
+    const company = String(formData.get("company") || "");
+    const message = String(formData.get("message") || "");
+
+    const subject = "Home Of Coders Quote Request";
+    const body = [
+      "New quote request from Home Of Coders website.",
+      "",
+      `Name: ${fullName}`,
+      `Email: ${email}`,
+      `Phone: ${phone}`,
+      `Company: ${company}`,
+      `Services Interested: ${
+        selectedServices.length > 0
+          ? selectedServices.join(", ")
+          : "Not specified"
+      }`,
+      `Budget: ${selectedBudget || "Not specified"}`,
+      "",
+      "Project Details:",
+      message,
+    ].join("\n");
+
+    window.location.href = `mailto:homeofcoders@gmail.com?subject=${
+      encodeURIComponent(
+        subject,
+      )
+    }&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <div className="contact-page">
       <div className="noise-layer" />
@@ -168,9 +221,14 @@ export default function ContactPage() {
             <a className="btn btn-glow" href="#contact-form">
               Start conversation
             </a>
-            <a className="btn btn-outline-light" href="#whatsapp">
+            <a
+              className="btn btn-outline-light"
+              href="https://wa.me/8801886123362"
+              target="_blank"
+              rel="noreferrer"
+            >
               <i className="fa-brands fa-whatsapp" aria-hidden="true" />
-              Quick chat on WhatsApp
+              <span>+880 1886-123362</span>
             </a>
           </div>
         </div>
@@ -209,6 +267,20 @@ export default function ContactPage() {
                   <i className="fa-solid fa-phone" aria-hidden="true" />
                   +880 1728-705880
                 </p>
+                <p>
+                  <i className="fa-solid fa-phone" aria-hidden="true" />
+                  +880 1742123369
+                </p>
+                <a
+                  className="contact-phone-link"
+                  href="https://wa.me/8801886123362"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fa-brands fa-whatsapp" aria-hidden="true" />
+                  +880 1886-123362
+                  <span>WhatsApp</span>
+                </a>
               </div>
 
               <div className="contact-divider" />
@@ -218,7 +290,7 @@ export default function ContactPage() {
                   <i className="fa-solid fa-envelope" aria-hidden="true" />
                   Email
                 </h3>
-                <p>houseofcodersofficial@gmail.com</p>
+                <p>homeofcoders@gmail.com</p>
               </div>
 
               <div className="contact-divider" />
@@ -253,7 +325,7 @@ export default function ContactPage() {
               </div>
             </aside>
 
-            <div className="contact-form-card">
+            <form className="contact-form-card" onSubmit={handleSubmit}>
               <h2>Let&apos;s Talk About Your Project</h2>
               <p className="contact-form-intro">
                 Fill out the form below and we&apos;ll get back to you within 24
@@ -270,9 +342,15 @@ export default function ContactPage() {
                 <div className="contact-option-grid">
                   {serviceOptions.map((service) => (
                     <button
-                      className="contact-option-card"
+                      className={`contact-option-card ${
+                        selectedServices.includes(service.title)
+                          ? "is-selected"
+                          : ""
+                      }`.trim()}
                       type="button"
                       key={service.title}
+                      aria-pressed={selectedServices.includes(service.title)}
+                      onClick={() => toggleService(service.title)}
                     >
                       <div className="contact-option-icon">
                         <i
@@ -297,9 +375,13 @@ export default function ContactPage() {
                 <div className="contact-budget-grid">
                   {budgetOptions.map((budget) => (
                     <button
-                      className="contact-budget-card"
+                      className={`contact-budget-card ${
+                        selectedBudget === budget.label ? "is-selected" : ""
+                      }`.trim()}
                       type="button"
                       key={budget.label}
+                      aria-pressed={selectedBudget === budget.label}
+                      onClick={() => handleBudgetSelect(budget.label)}
                     >
                       <span className="budget-radio" />
                       <div>
@@ -332,6 +414,7 @@ export default function ContactPage() {
                     <input
                       className="contact-input"
                       id="full-name"
+                      name="fullName"
                       placeholder="John Doe"
                     />
                   </div>
@@ -342,6 +425,7 @@ export default function ContactPage() {
                     <input
                       className="contact-input"
                       id="email"
+                      name="email"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -352,6 +436,7 @@ export default function ContactPage() {
                     <input
                       className="contact-input"
                       id="phone"
+                      name="phone"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
@@ -362,6 +447,7 @@ export default function ContactPage() {
                     <input
                       className="contact-input"
                       id="company"
+                      name="company"
                       placeholder="Your Company (Optional)"
                     />
                   </div>
@@ -374,6 +460,7 @@ export default function ContactPage() {
                 </div>
                 <textarea
                   className="contact-textarea"
+                  name="message"
                   placeholder="Tell us about your project, goals, and timeline..."
                 />
               </div>
@@ -387,7 +474,7 @@ export default function ContactPage() {
                 <span>Terms &amp; Conditions</span> and
                 <span>Privacy Policy</span>.
               </p>
-            </div>
+            </form>
           </div>
         </div>
       </section>
